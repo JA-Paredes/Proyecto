@@ -1,0 +1,31 @@
+
+# Imagen base de la que partimos
+
+FROM ubuntu:latest
+
+# Creador del Dockerfile
+
+MAINTAINER juanan
+
+# Actualizar Ubuntu e instalar apache2, limpiar los restos de la instalación
+
+RUN apt-get update && apt-get install -y apache2 && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Variables para el correcto funcionamiento de apache en Docker
+
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+
+# Puerto que expone el contenedor
+
+EXPOSE 80
+
+# Copiamos el index.html que acabamos de crear al contenedor
+
+ADD ["index.html","/var/www/html/"]
+
+# Comando que se va a ejecutar al crear el contenedor, para iniciar apache
+
+ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+
