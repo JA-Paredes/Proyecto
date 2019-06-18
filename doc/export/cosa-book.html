@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="DevOps, Docker y Kubernetes" />
+  <meta name="author" content="Juan Antonio Paredes León" />
+  <title>DevOps, Docker y Kubernetes</title>
+  <style type="text/css">code{white-space: pre; background-color: lightgrey;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">DevOps, Docker y Kubernetes</h1>
+<h2 class="author">Juan Antonio Paredes León</h2>
+<h3 class="date">Curso 2018/19</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#introducción"><span class="toc-section-number">2</span> Introducción</a><ul>
+<li><a href="#resumen"><span class="toc-section-number">2.1</span> Resumen</a></li>
+<li><a href="#justificación"><span class="toc-section-number">2.2</span> Justificación</a></li>
+<li><a href="#objetivos-principales"><span class="toc-section-number">2.3</span> Objetivos principales</a></li>
+</ul></li>
+<li><a href="#definiciones"><span class="toc-section-number">3</span> Definiciones</a><ul>
+<li><a href="#devops-i"><span class="toc-section-number">3.1</span> DevOps I</a></li>
+<li><a href="#devops-ii"><span class="toc-section-number">3.2</span> DevOps II</a></li>
+<li><a href="#integración-continua-i"><span class="toc-section-number">3.3</span> Integración continua I</a></li>
+<li><a href="#integración-continua-ii"><span class="toc-section-number">3.4</span> Integración continua II</a></li>
+<li><a href="#docker-i"><span class="toc-section-number">3.5</span> Docker I</a></li>
+<li><a href="#docker-ii"><span class="toc-section-number">3.6</span> Docker II</a></li>
+<li><a href="#docker-iii"><span class="toc-section-number">3.7</span> Docker III</a></li>
+<li><a href="#docker-iv"><span class="toc-section-number">3.8</span> Docker IV</a></li>
+<li><a href="#docker-v"><span class="toc-section-number">3.9</span> Docker V</a></li>
+<li><a href="#kubernetes"><span class="toc-section-number">3.10</span> Kubernetes</a></li>
+<li><a href="#kubernetes-ii"><span class="toc-section-number">3.11</span> Kubernetes II</a></li>
+<li><a href="#kubernetes-iii"><span class="toc-section-number">3.12</span> Kubernetes III</a></li>
+<li><a href="#kubernetes-iv"><span class="toc-section-number">3.13</span> Kubernetes IV</a></li>
+</ul></li>
+<li><a href="#objetivos"><span class="toc-section-number">4</span> Objetivos</a><ul>
+<li><a href="#objetivos-docker"><span class="toc-section-number">4.1</span> Objetivos Docker</a></li>
+<li><a href="#objetivos-kubernetes"><span class="toc-section-number">4.2</span> Objetivos Kubernetes</a></li>
+</ul></li>
+<li><a href="#material"><span class="toc-section-number">5</span> Material</a><ul>
+<li><a href="#hardware"><span class="toc-section-number">5.1</span> Hardware</a></li>
+<li><a href="#software-yo-aplicaciones"><span class="toc-section-number">5.2</span> Software y/o aplicaciones</a></li>
+</ul></li>
+<li><a href="#demo---labels-en-kubernetes"><span class="toc-section-number">6</span> Demo - Labels en Kubernetes</a><ul>
+<li><a href="#qué-son"><span class="toc-section-number">6.1</span> ¿Qué son?</a></li>
+<li><a href="#archivos-para-el-ejemplo"><span class="toc-section-number">6.2</span> Archivos para el ejemplo</a></li>
+<li><a href="#live-terminal"><span class="toc-section-number">6.3</span> Live Terminal</a></li>
+</ul></li>
+<li><a href="#cierre"><span class="toc-section-number">7</span> Cierre</a><ul>
+<li><a href="#resultado"><span class="toc-section-number">7.1</span> Resultado</a></li>
+<li><a href="#conclusiones"><span class="toc-section-number">7.2</span> Conclusiones</a></li>
+<li><a href="#fin"><span class="toc-section-number">7.3</span> Fin</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="introducción"><span class="header-section-number">2</span> Introducción</h1>
+<h2 id="resumen"><span class="header-section-number">2.1</span> Resumen</h2>
+<p>Debido al desconocimiento que hay de uno de los perfiles más demandados de la actualidad, <strong>DevOps</strong>, en este proyecto se va definir el significado del término y su relación con un administrador de sistemas, así como dos de las herramientas más utilizadas en la actualidad por los mismos, <strong>Docker y Kubernetes</strong>.</p>
+<h2 id="justificación"><span class="header-section-number">2.2</span> Justificación</h2>
+<p>Actualmente en el mundo laboral, ser administrador de sistemas tal y como lo conocemos no es suficiente. Todo se está empezando a mover a la nube, las cosas necesitan estar listas “ya” y la disponibilidad tiene que ser absoluta.</p>
+<p>El administrador de sistemas tiene que evolucionar hacia un método de trabajo conocido como DevOps.</p>
+<p>Tras terminar el ciclo y encontrarme en mundo laboral, vi que no sabía realmente que era un DevOps, de Docker sabía lo básico y Kubernetes era un desconocido. Por eso pienso que estos conocimientos son necesarios y de ahí la realización de este proyecto.</p>
+<h2 id="objetivos-principales"><span class="header-section-number">2.3</span> Objetivos principales</h2>
+<ul>
+<li><p>Explicar que es un DevOps.</p></li>
+<li><p>Explicar qué es y cómo funciona Docker.</p></li>
+<li><p>Explicar qué es y cómo funciona Kubernetes.</p></li>
+</ul>
+<h1 id="definiciones"><span class="header-section-number">3</span> Definiciones</h1>
+<h2 id="devops-i"><span class="header-section-number">3.1</span> DevOps I</h2>
+<p>Definición según <a href="https://es.atlassian.com/devops">Atlassian</a> :</p>
+<p><em>“DevOps es un conjunto de prácticas que automatizan los procesos entre los equipos de desarrollo de software y TI para que puedan compilar, probar y publicar software con mayor rapidez y fiabilidad. El concepto de DevOps se basa en establecer una cultura de colaboración entre equipos que, tradicionalmente, trabajaban en grupos aislados.”</em></p>
+<h2 id="devops-ii"><span class="header-section-number">3.2</span> DevOps II</h2>
+<p>Como vemos, es una forma de trabajo. Pero, ¿Qué busca una empresa cuando quiere contratar un DevOps?</p>
+<p>Lo que se entiende por DevOps en el mundo laboral es una persona que conoce y maneja todas las tecnologías para implementar esta forma de trabajo.</p>
+<p>Como decía la definición, un DevOps automatiza los procesos entre los equipos de desarrollo para agilizar y facilitar el trabajo. Y aquí encontramos el siguiente termino, la integración continua.</p>
+<h2 id="integración-continua-i"><span class="header-section-number">3.3</span> Integración continua I</h2>
+<p>La integración continua (continuous integration en inglés) es un modelo informático propuesto inicialmente por <a href="https://es.wikipedia.org/wiki/Martin_Fowler">Martin Fowler</a> que consiste en hacer integraciones automáticas de un proyecto lo más a menudo posible para así poder detectar fallos cuanto antes. Entendemos por integración la compilación y ejecución de pruebas de todo un proyecto.</p>
+<p>Podríamos decir que la función de lo que se entiende por “DevOps” es facilitar todo el entorno necesario para llevar a cabo un modelo de integración continua.</p>
+<h2 id="integración-continua-ii"><span class="header-section-number">3.4</span> Integración continua II</h2>
+<p><img src="../img/devops.redimensionado.png" /></p>
+<h2 id="docker-i"><span class="header-section-number">3.5</span> Docker I</h2>
+<p><img src="../img/do.redimensionado.png" /></p>
+<p>La idea detrás de Docker es crear contenedores ligeros y portables para las aplicaciones software que puedan ejecutarse en cualquier máquina en la que esté instalado, independientemente del sistema operativo que la máquina tenga por debajo, facilitando así también los despliegues.</p>
+<h2 id="docker-ii"><span class="header-section-number">3.6</span> Docker II</h2>
+<p>Uno de los errores más extendidos a la hora de hablar de Docker es que se piensa que es una máquina virtual. Esto no es así, como podemos ver en la siguiente imagen:</p>
+<p><img src="../img/dockvsvm.png" /></p>
+<h2 id="docker-iii"><span class="header-section-number">3.7</span> Docker III</h2>
+<ul>
+<li><p>Se pueden “arrancar” en fracciones de segundo, en lugar de minutos.</p></li>
+<li><p>Pueden ocupar MB en lugar de GB en disco.</p></li>
+<li><p>Se pueden ejecutar de 10 a 100 veces más contenedores que máquinas virtuales en el mismo equipo.</p></li>
+</ul>
+<h2 id="docker-iv"><span class="header-section-number">3.8</span> Docker IV</h2>
+<p>La tecnología Docker usa el kernel de Linux y las funciones de este, como Cgroups (grupos de control, permiten limitar y distribuir el uso de recursos de sistema como la CPU, memoria, red o disco) y namespaces (espacio de nombres, es un medio para organizar clases dentro de un entorno) para segregar los procesos, de modo que puedan ejecutarse de manera independiente.</p>
+<p>El propósito de los contenedores es esta independencia: la capacidad de ejecutar varios procesos y aplicaciones por separado para hacer un mejor uso de su infraestructura y, al mismo tiempo, conservar la seguridad que tendría con sistemas separados.</p>
+<h2 id="docker-v"><span class="header-section-number">3.9</span> Docker V</h2>
+<p>Docker funciona con imágenes y contenedores. Para que se entienda de una manera más sencilla, podríamos decir que las imágenes de Docker son moldes, y cuando arrancamos un contenedor a partir de una imagen, hacemos una impresión de ese molde:</p>
+<p><img src="../img/dockercont.PNG" /></p>
+<p>Podemos hacer todos los contenedores que necesitemos. Además, interactúan entre ellos.</p>
+<h2 id="kubernetes"><span class="header-section-number">3.10</span> Kubernetes</h2>
+<p><img src="/home/juanan/markdownslides-master/doc/img/ku.png" /></p>
+<p>Kubernetes (K8S) es un orquestador de contenedores y se define como un sistema open-source para la automatización de despliegues, el escalado y la gestión de aplicaciones.</p>
+<p>Se puede desplegar en múltiples entornos cloud o en bare-metal (servidores de hardware puro sin SO) y soporta múltiples runtimes de contenedores.</p>
+<h2 id="kubernetes-ii"><span class="header-section-number">3.11</span> Kubernetes II</h2>
+<ul>
+<li><p>Escalado y autoescalado.</p></li>
+<li><p>Descubrimiento de servicios y balanceo de carga.</p></li>
+<li><p>Autorreparación.</p></li>
+<li><p>Despliegues y rollbacks automáticos.</p></li>
+<li><p>Planificación.</p></li>
+<li><p>Gestión de la configuración y secrets.</p></li>
+</ul>
+<h2 id="kubernetes-iii"><span class="header-section-number">3.12</span> Kubernetes III</h2>
+<p>Dentro de un cluster, Kubernetes se organiza en nodos master y worker. Los nodos master se encargan de organizar (orquestar) a los nodos workers, que son en los que se habilitan los pods (conjuntos de contenedores). En la siguiente imagen podemos ver la estructura citada:</p>
+<p><img src="/home/juanan/markdownslides-master/doc/img/maswork.png" /></p>
+<h2 id="kubernetes-iv"><span class="header-section-number">3.13</span> Kubernetes IV</h2>
+<p>Kubernetes despliega recursos en el cluster mediante archivos yaml:</p>
+<pre><code>apiVersion: v1  
+kind: Pod  
+metadata:  
+  name: pod  
+spec:  
+  containers:  
+  - name: nginx  
+     image: nginx:1.7.9  
+     ports:  
+     - containerPort: 80  </code></pre>
+<h1 id="objetivos"><span class="header-section-number">4</span> Objetivos</h1>
+<h2 id="objetivos-docker"><span class="header-section-number">4.1</span> Objetivos Docker</h2>
+<ul>
+<li><p>Comandos básicos de Docker.</p></li>
+<li><p>Redes Docker.</p></li>
+<li><p>Volúmenes.</p></li>
+<li><p>Puertos Docker.</p></li>
+<li><p>Dockerfile.</p></li>
+<li><p>Docker Compose.</p></li>
+</ul>
+<h2 id="objetivos-kubernetes"><span class="header-section-number">4.2</span> Objetivos Kubernetes</h2>
+<ul>
+<li><p>Comandos básicos Kubernetes.</p></li>
+<li><p>Deployments.</p></li>
+<li><p>Services.</p></li>
+<li><p>Secrets.</p></li>
+<li><p>Labels.</p></li>
+<li><p>Healthcheks.</p></li>
+<li><p>Pod Life Cycle.</p></li>
+<li><p>Namespaces.</p></li>
+</ul>
+<h1 id="material"><span class="header-section-number">5</span> Material</h1>
+<h2 id="hardware"><span class="header-section-number">5.1</span> Hardware</h2>
+<ul>
+<li><p>Físico: Todo el proyecto se realizado en un equipo con un i5-4670K y 16GB de RAM.</p></li>
+<li><p>Virtual: Máquina VirtualBox con 4 núcleos y 4GB de RAM.</p></li>
+</ul>
+<h2 id="software-yo-aplicaciones"><span class="header-section-number">5.2</span> Software y/o aplicaciones</h2>
+<ul>
+<li><p>Windows 10: S.O. del host.</p></li>
+<li><p>Ubuntu 18.04: S.O de la máquina virtual.</p></li>
+<li><p>Docker.</p></li>
+<li><p>MiniKube: Cluster local de Kubernetes.</p></li>
+<li><p>Kubectl: Cliente para administrar el cluster.</p></li>
+</ul>
+<h1 id="demo---labels-en-kubernetes"><span class="header-section-number">6</span> Demo - Labels en Kubernetes</h1>
+<h2 id="qué-son"><span class="header-section-number">6.1</span> ¿Qué son?</h2>
+<p>Son pares clave/valor que podemos asociar a cualquier objeto de Kubernetes, se encargan de identificar ese recurso de manera inequívoca en ese namespace y también se pueden utilizar para filtrado.</p>
+<p><img src="../img/labels.redimensionado.png" /></p>
+<h2 id="archivos-para-el-ejemplo"><span class="header-section-number">6.2</span> Archivos para el ejemplo</h2>
+<ul>
+<li><p><a href="https://github.com/JA-Paredes/Proyecto/blob/master/Labels/Deploy1.yaml">Deploy 1</a></p></li>
+<li><p><a href="https://github.com/JA-Paredes/Proyecto/blob/master/Labels/Deploy2.yaml">Deploy 2</a></p></li>
+<li><p><a href="https://github.com/JA-Paredes/Proyecto/blob/master/Labels/Deploy3.yaml">Deploy 3</a></p></li>
+</ul>
+<h2 id="live-terminal"><span class="header-section-number">6.3</span> Live Terminal</h2>
+<p><a href="https://asciinema.org/a/DjTFInqC394XKmPMfbNK6mO5B"><img src="https://asciinema.org/a/DjTFInqC394XKmPMfbNK6mO5B.svg" alt="asciicast" /></a></p>
+<h1 id="cierre"><span class="header-section-number">7</span> Cierre</h1>
+<h2 id="resultado"><span class="header-section-number">7.1</span> Resultado</h2>
+<p>Como se ha dicho, este proyecto no tiene un resultado final como tal. Lo que se espera es que sirva como un manual para cualquier usuario que quiera conocer más sobre los términos que trata.</p>
+<h2 id="conclusiones"><span class="header-section-number">7.2</span> Conclusiones</h2>
+<p>Un administrador de sistemas tiene que ir preparándose para entrar al mundo de DevOps.</p>
+<p>Docker es muy útil en cualquier situación y necesario para Kubernetes. Su curva de aprendizaje se mantiene constante.</p>
+<p>Kubernetes es una herramienta muy potente para cualquier empresa que ofrezca servicios. Eso sí, la curva de aprendizaje se dispara, y cuanto más sabemos, más complicado parece lo siguiente.</p>
+<h2 id="fin"><span class="header-section-number">7.3</span> Fin</h2>
+<p><img src="/home/juanan/markdownslides-master/doc/img/ty.png" data-text-align="center" style="width:50.0%" /></p>
+</body>
+</html>

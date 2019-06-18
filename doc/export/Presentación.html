@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc">
+  <meta name="description" content="DevOps, Docker y Kubernetes" />
+  <meta name="author" content="Juan Antonio Paredes León">
+  <title>DevOps, Docker y Kubernetes</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../lib/reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="../lib/reveal.js-menu/menu.css">
+  <link rel="stylesheet" href="../lib/reveal.js/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="../lib/reveal.js/lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../lib/reveal.js/css/print/pdf.css' : '../lib/reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+  <style type="text/css">
+
+#cine {
+height: 50%;
+  width: 50%;
+}
+p {
+	font-size:90% !important;}
+
+    body {
+      
+    background-image: url(../img/nombre.png), url(../img/titulo.png);
+    background-size: 20%,18%;
+    background-repeat: no-repeat, no-repeat;
+    background-position: 3% 97%, 99% 1%;
+    }
+    code{
+      white-space: pre;
+    }
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 200% !important;
+    }
+    h1 {
+      font-size: 200% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    h3 {
+      font-size: 100% !important;
+    }
+    @media print {
+      #only-print-parent { display: table !important; }
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 300% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+      h3 { font-size: 150% !important; }
+    }
+  </style>
+  <!--[if lt IE 9]>
+  <script src="../lib/reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">DevOps, Docker y Kubernetes</h2>
+      <h2 class="author">Juan Antonio Paredes León</h2>
+      <h3 class="date">Curso 2018/19</h3>
+    </div>
+</section>
+
+<section><section id="introducción" class="title-slide slide level1"><h1><span class="header-section-number">2</span> Introducción</h1></section><section id="resumen" class="slide level2">
+<h2><span class="header-section-number">2.1</span> Resumen</h2>
+<p>Debido al desconocimiento que hay de uno de los perfiles más demandados de la actualidad, <strong>DevOps</strong>, en este proyecto se va definir el significado del término y su relación con un administrador de sistemas, así como dos de las herramientas más utilizadas en la actualidad por los mismos, <strong>Docker y Kubernetes</strong>.</p>
+</section><section id="justificación" class="slide level2">
+<h2><span class="header-section-number">2.2</span> Justificación</h2>
+<p>Actualmente en el mundo laboral, ser administrador de sistemas tal y como lo conocemos no es suficiente. Todo se está empezando a mover a la nube, las cosas necesitan estar listas “ya” y la disponibilidad tiene que ser absoluta.</p>
+<p>El administrador de sistemas tiene que evolucionar hacia un método de trabajo conocido como DevOps.</p>
+<p>Tras terminar el ciclo y encontrarme en mundo laboral, vi que no sabía realmente que era un DevOps, de Docker sabía lo básico y Kubernetes era un desconocido. Por eso pienso que estos conocimientos son necesarios y de ahí la realización de este proyecto.</p>
+</section><section id="objetivos-principales" class="slide level2">
+<h2><span class="header-section-number">2.3</span> Objetivos principales</h2>
+<ul>
+<li><p>Explicar que es un DevOps.</p></li>
+<li><p>Explicar qué es y cómo funciona Docker.</p></li>
+<li><p>Explicar qué es y cómo funciona Kubernetes.</p></li>
+</ul>
+</section></section>
+<section><section id="definiciones" class="title-slide slide level1"><h1><span class="header-section-number">3</span> Definiciones</h1></section><section id="devops-i" class="slide level2">
+<h2><span class="header-section-number">3.1</span> DevOps I</h2>
+<p>Definición según <a href="https://es.atlassian.com/devops">Atlassian</a> :</p>
+<p><em>“DevOps es un conjunto de prácticas que automatizan los procesos entre los equipos de desarrollo de software y TI para que puedan compilar, probar y publicar software con mayor rapidez y fiabilidad. El concepto de DevOps se basa en establecer una cultura de colaboración entre equipos que, tradicionalmente, trabajaban en grupos aislados.”</em></p>
+</section><section id="devops-ii" class="slide level2">
+<h2><span class="header-section-number">3.2</span> DevOps II</h2>
+<p>Como vemos, es una forma de trabajo. Pero, ¿Qué busca una empresa cuando quiere contratar un DevOps?</p>
+<p>Lo que se entiende por DevOps en el mundo laboral es una persona que conoce y maneja todas las tecnologías para implementar esta forma de trabajo.</p>
+<p>Como decía la definición, un DevOps automatiza los procesos entre los equipos de desarrollo para agilizar y facilitar el trabajo. Y aquí encontramos el siguiente termino, la integración continua.</p>
+</section><section id="integración-continua-i" class="slide level2">
+<h2><span class="header-section-number">3.3</span> Integración continua I</h2>
+<p>La integración continua (continuous integration en inglés) es un modelo informático propuesto inicialmente por <a href="https://es.wikipedia.org/wiki/Martin_Fowler">Martin Fowler</a> que consiste en hacer integraciones automáticas de un proyecto lo más a menudo posible para así poder detectar fallos cuanto antes. Entendemos por integración la compilación y ejecución de pruebas de todo un proyecto.</p>
+<p>Podríamos decir que la función de lo que se entiende por “DevOps” es facilitar todo el entorno necesario para llevar a cabo un modelo de integración continua.</p>
+</section><section id="integración-continua-ii" class="slide level2">
+<h2><span class="header-section-number">3.4</span> Integración continua II</h2>
+<p><img data-src="../img/devops.redimensionado.png" /></p>
+</section><section id="docker-i" class="slide level2">
+<h2><span class="header-section-number">3.5</span> Docker I</h2>
+<p><img data-src="../img/do.redimensionado.png" /></p>
+<p>La idea detrás de Docker es crear contenedores ligeros y portables para las aplicaciones software que puedan ejecutarse en cualquier máquina en la que esté instalado, independientemente del sistema operativo que la máquina tenga por debajo, facilitando así también los despliegues.</p>
+</section><section id="docker-ii" class="slide level2">
+<h2><span class="header-section-number">3.6</span> Docker II</h2>
+<p>Uno de los errores más extendidos a la hora de hablar de Docker es que se piensa que es una máquina virtual. Esto no es así, como podemos ver en la siguiente imagen:</p>
+<p><img data-src="../img/dockvsvm.png" /></p>
+</section><section id="docker-iii" class="slide level2">
+<h2><span class="header-section-number">3.7</span> Docker III</h2>
+<ul>
+<li><p>Se pueden “arrancar” en fracciones de segundo, en lugar de minutos.</p></li>
+<li><p>Pueden ocupar MB en lugar de GB en disco.</p></li>
+<li><p>Se pueden ejecutar de 10 a 100 veces más contenedores que máquinas virtuales en el mismo equipo.</p></li>
+</ul>
+</section><section id="docker-iv" class="slide level2">
+<h2><span class="header-section-number">3.8</span> Docker IV</h2>
+<p>La tecnología Docker usa el kernel de Linux y las funciones de este, como Cgroups (grupos de control, permiten limitar y distribuir el uso de recursos de sistema como la CPU, memoria, red o disco) y namespaces (espacio de nombres, es un medio para organizar clases dentro de un entorno) para segregar los procesos, de modo que puedan ejecutarse de manera independiente.</p>
+<p>El propósito de los contenedores es esta independencia: la capacidad de ejecutar varios procesos y aplicaciones por separado para hacer un mejor uso de su infraestructura y, al mismo tiempo, conservar la seguridad que tendría con sistemas separados.</p>
+</section><section id="docker-v" class="slide level2">
+<h2><span class="header-section-number">3.9</span> Docker V</h2>
+<p>Docker funciona con imágenes y contenedores. Para que se entienda de una manera más sencilla, podríamos decir que las imágenes de Docker son moldes, y cuando arrancamos un contenedor a partir de una imagen, hacemos una impresión de ese molde:</p>
+<p><img data-src="../img/dockercont.PNG" /></p>
+<p>Podemos hacer todos los contenedores que necesitemos. Además, interactúan entre ellos.</p>
+</section><section id="kubernetes" class="slide level2">
+<h2><span class="header-section-number">3.10</span> Kubernetes</h2>
+<p><img data-src="/home/juanan/markdownslides-master/doc/img/ku.png" /></p>
+<p>Kubernetes (K8S) es un orquestador de contenedores y se define como un sistema open-source para la automatización de despliegues, el escalado y la gestión de aplicaciones.</p>
+<p>Se puede desplegar en múltiples entornos cloud o en bare-metal (servidores de hardware puro sin SO) y soporta múltiples runtimes de contenedores.</p>
+</section><section id="kubernetes-ii" class="slide level2">
+<h2><span class="header-section-number">3.11</span> Kubernetes II</h2>
+<ul>
+<li><p>Escalado y autoescalado.</p></li>
+<li><p>Descubrimiento de servicios y balanceo de carga.</p></li>
+<li><p>Autorreparación.</p></li>
+<li><p>Despliegues y rollbacks automáticos.</p></li>
+<li><p>Planificación.</p></li>
+<li><p>Gestión de la configuración y secrets.</p></li>
+</ul>
+</section><section id="kubernetes-iii" class="slide level2">
+<h2><span class="header-section-number">3.12</span> Kubernetes III</h2>
+<p>Dentro de un cluster, Kubernetes se organiza en nodos master y worker. Los nodos master se encargan de organizar (orquestar) a los nodos workers, que son en los que se habilitan los pods (conjuntos de contenedores). En la siguiente imagen podemos ver la estructura citada:</p>
+<p><img data-src="/home/juanan/markdownslides-master/doc/img/maswork.png" /></p>
+</section><section id="kubernetes-iv" class="slide level2">
+<h2><span class="header-section-number">3.13</span> Kubernetes IV</h2>
+<p>Kubernetes despliega recursos en el cluster mediante archivos yaml:</p>
+<pre><code>apiVersion: v1  
+kind: Pod  
+metadata:  
+  name: pod  
+spec:  
+  containers:  
+  - name: nginx  
+     image: nginx:1.7.9  
+     ports:  
+     - containerPort: 80  </code></pre>
+</section></section>
+<section><section id="objetivos" class="title-slide slide level1"><h1><span class="header-section-number">4</span> Objetivos</h1></section><section id="objetivos-docker" class="slide level2">
+<h2><span class="header-section-number">4.1</span> Objetivos Docker</h2>
+<ul>
+<li><p>Comandos básicos de Docker.</p></li>
+<li><p>Redes Docker.</p></li>
+<li><p>Volúmenes.</p></li>
+<li><p>Puertos Docker.</p></li>
+<li><p>Dockerfile.</p></li>
+<li><p>Docker Compose.</p></li>
+</ul>
+</section><section id="objetivos-kubernetes" class="slide level2">
+<h2><span class="header-section-number">4.2</span> Objetivos Kubernetes</h2>
+<ul>
+<li><p>Comandos básicos Kubernetes.</p></li>
+<li><p>Deployments.</p></li>
+<li><p>Services.</p></li>
+<li><p>Secrets.</p></li>
+<li><p>Labels.</p></li>
+<li><p>Healthcheks.</p></li>
+<li><p>Pod Life Cycle.</p></li>
+<li><p>Namespaces.</p></li>
+</ul>
+</section></section>
+<section><section id="material" class="title-slide slide level1"><h1><span class="header-section-number">5</span> Material</h1></section><section id="hardware" class="slide level2">
+<h2><span class="header-section-number">5.1</span> Hardware</h2>
+<ul>
+<li><p>Físico: Todo el proyecto se realizado en un equipo con un i5-4670K y 16GB de RAM.</p></li>
+<li><p>Virtual: Máquina VirtualBox con 4 núcleos y 4GB de RAM.</p></li>
+</ul>
+</section><section id="software-yo-aplicaciones" class="slide level2">
+<h2><span class="header-section-number">5.2</span> Software y/o aplicaciones</h2>
+<ul>
+<li><p>Windows 10: S.O. del host.</p></li>
+<li><p>Ubuntu 18.04: S.O de la máquina virtual.</p></li>
+<li><p>Docker.</p></li>
+<li><p>MiniKube: Cluster local de Kubernetes.</p></li>
+<li><p>Kubectl: Cliente para administrar el cluster.</p></li>
+</ul>
+</section></section>
+<section><section id="demo---labels-en-kubernetes" class="title-slide slide level1"><h1><span class="header-section-number">6</span> Demo - Labels en Kubernetes</h1></section><section id="qué-son" class="slide level2">
+<h2><span class="header-section-number">6.1</span> ¿Qué son?</h2>
+<p>Son pares clave/valor que podemos asociar a cualquier objeto de Kubernetes, se encargan de identificar ese recurso de manera inequívoca en ese namespace y también se pueden utilizar para filtrado.</p>
+<p><img data-src="../img/labels.redimensionado.png" /></p>
+</section><section id="archivos-para-el-ejemplo" class="slide level2">
+<h2><span class="header-section-number">6.2</span> Archivos para el ejemplo</h2>
+<ul>
+<li><p><a href="https://github.com/JA-Paredes/Proyecto/blob/master/Labels/Deploy1.yaml">Deploy 1</a></p></li>
+<li><p><a href="https://github.com/JA-Paredes/Proyecto/blob/master/Labels/Deploy2.yaml">Deploy 2</a></p></li>
+<li><p><a href="https://github.com/JA-Paredes/Proyecto/blob/master/Labels/Deploy3.yaml">Deploy 3</a></p></li>
+</ul>
+</section><section id="live-terminal" class="slide level2">
+<h2><span class="header-section-number">6.3</span> Live Terminal</h2>
+<p><a href="https://asciinema.org/a/DjTFInqC394XKmPMfbNK6mO5B"><img id="cine" data-src="https://asciinema.org/a/DjTFInqC394XKmPMfbNK6mO5B.svg" alt="asciicast" /></a></p>
+</section></section>
+<section><section id="cierre" class="title-slide slide level1"><h1><span class="header-section-number">7</span> Cierre</h1></section><section id="resultado" class="slide level2">
+<h2><span class="header-section-number">7.1</span> Resultado</h2>
+<p>Como se ha dicho, este proyecto no tiene un resultado final como tal. Lo que se espera es que sirva como un manual para cualquier usuario que quiera conocer más sobre los términos que trata.</p>
+</section><section id="conclusiones" class="slide level2">
+<h2><span class="header-section-number">7.2</span> Conclusiones</h2>
+<p>Un administrador de sistemas tiene que ir preparándose para entrar al mundo de DevOps.</p>
+<p>Docker es muy útil en cualquier situación y necesario para Kubernetes. Su curva de aprendizaje se mantiene constante.</p>
+<p>Kubernetes es una herramienta muy potente para cualquier empresa que ofrezca servicios. Eso sí, la curva de aprendizaje se dispara, y cuanto más sabemos, más complicado parece lo siguiente.</p>
+</section><section id="fin" class="slide level2">
+<h2><span class="header-section-number">7.3</span> Fin</h2>
+<p><img data-src="/home/juanan/markdownslides-master/doc/img/ty.png" data-text-align="center" style="width:50.0%" /></p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        pdfMaxPagesPerSlide: 1,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1024,
+        height: 576,
+        // Factor of the display size that should remain empty around the content
+        margin: 0.3,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.1,
+        maxScale: 1.9,
+
+        menu: {
+            // Specifies which side of the presentation the menu will
+            // be shown. Use 'left' or 'right'.
+            side: 'left',
+
+            // Add slide numbers to the titles in the slide list.
+            // Use 'true' or format string (same as reveal.js slide numbers)
+            numbers: false,
+
+            // Specifies which slide elements will be used for generating
+            // the slide titles in the menu. The default selects the first
+            // heading element found in the slide, but you can specify any
+            // valid css selector and the text from the first matching
+            // element will be used.
+            // Note: that a section data-menu-title attribute or an element
+            // with a menu-title class will take precedence over this option
+            titleSelector: 'h1, h2, h3, h4, h5, h6',
+
+            // Hide slides from the menu that do not have a title.
+            // Set to 'true' to only list slides with titles.
+            hideMissingTitles: false,
+
+            // Add markers to the slide titles to indicate the
+            // progress through the presentation
+            markers: false,
+
+            // Specify custom panels to be included in the menu, by
+            // providing an array of objects with 'title', 'icon'
+            // properties, and either a 'src' or 'content' property.
+            custom: false,
+
+            // Specifies the themes that will be available in the themes
+            // menu panel. Set to 'false' to hide themes panel.
+            themes: [
+                { name: 'Black', theme: '../lib/reveal.js/css/theme/black.css' },
+                { name: 'White', theme: '../lib/reveal.js/css/theme/white.css' },
+                { name: 'League', theme: '../lib/reveal.js/css/theme/league.css' },
+                { name: 'Sky', theme: '../lib/reveal.js/css/theme/sky.css' },
+                { name: 'Beige', theme: '../lib/reveal.js/css/theme/beige.css' },
+                { name: 'Simple', theme: '../lib/reveal.js/css/theme/simple.css' },
+                { name: 'Serif', theme: '../lib/reveal.js/css/theme/serif.css' },
+                { name: 'Blood', theme: '../lib/reveal.js/css/theme/blood.css' },
+                { name: 'Night', theme: '../lib/reveal.js/css/theme/night.css' },
+                { name: 'Moon', theme: '../lib/reveal.js/css/theme/moon.css' },
+                { name: 'Solarized', theme: '../lib/reveal.js/css/theme/solarized.css' }
+            ],
+
+            // Specifies if the transitions menu panel will be shown.
+            transitions: true,
+
+            // Adds a menu button to the slides to open the menu panel.
+            // Set to 'false' to hide the button.
+            openButton: true,
+
+            // If 'true' allows the slide number in the presentation to
+            // open the menu panel. The reveal.js slideNumber option must
+            // be displayed for this to take effect
+            openSlideNumber: false,
+
+            // If true allows the user to open and navigate the menu using
+            // the keyboard. Standard keyboard interaction with reveal
+            // will be disabled while the menu is open.
+            keyboard: true
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../lib/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../lib/reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: '../lib/reveal.js/plugin/notes/notes.js', async: true },
+          //{ src: '../lib/reveal.js/plugin/search/search.js', async: true },
+          { src: '../lib/reveal.js-menu/menu.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
